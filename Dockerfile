@@ -1,5 +1,7 @@
 FROM microsoft/dotnet:2.2-sdk AS installer-env
 
+#Build happens here 
+
 COPY . /src/dotnet-function-app
 RUN cd /src/dotnet-function-app && \
     mkdir -p /home/site/wwwroot && \
@@ -9,4 +11,11 @@ FROM mcr.microsoft.com/azure-functions/dotnet:2.0
 ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
     AzureFunctionsJobHost__Logging__Console__IsEnabled=true
 
+# Install git
+RUN \
+    apt-get update && \
+    apt-get -y upgrade && \
+    apt-get install -y curl git 
+
+# Pass in build results
 COPY --from=installer-env ["/home/site/wwwroot", "/home/site/wwwroot"]

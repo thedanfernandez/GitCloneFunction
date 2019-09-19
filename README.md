@@ -2,7 +2,7 @@
 
 An Azure Function code sample that demonstrates executing system processes like `git clone` in a serverless Docker container using .NET Standard. The code uses an HttpTrigger and a querystring parameter to get a repo URL, clone locally and return the results.
 
-## Example:
+## Example
 
 Calling `http://localhost:7071/api/repoHttpTrigger?repo=https://github.com/octocat/Hello-World.git`
 
@@ -18,7 +18,7 @@ From Visual Studio Code, install the Azure Functions extension and click F5.
 
 ### From Azure Functions command line
 
-```
+```bash
 func start --build
 ```
 
@@ -28,7 +28,7 @@ func start --build
 
 From the `GitCloneFunction` directory, run `docker build`
 
-```
+```bash
 docker build -t gitclonefunction .
 ```
 
@@ -36,7 +36,7 @@ docker build -t gitclonefunction .
 
 Below we run the container in interactive mode with tty using `-it`, but you can run detached instead by running with `-d`
 
-```
+```bash
 docker run -p 8080:80 -it gitclonefunction
 ```
 
