@@ -26,7 +26,6 @@ namespace GitCloneFunction
             log.LogInformation($"Request received, repo: {req.Query["repo"]}");
             Uri repoUri;
 
-
             //validate input, example: https://github.com/octocat/Hello-World.git 
             if (string.IsNullOrEmpty(req.Query["repo"]))
             {
@@ -66,9 +65,9 @@ namespace GitCloneFunction
                 p.Start();
                 p.WaitForExit();
 
+                result.AppendLine($"Results from: {cloneFolder}");
                 foreach (string file in Directory.EnumerateFiles(cloneFolder, "*.*", SearchOption.AllDirectories))
                 {
-                    result.AppendLine($"Results from: {cloneFolder}");
                     result.AppendLine(file);
                 }
             }
@@ -84,7 +83,6 @@ namespace GitCloneFunction
             }
             return (ActionResult)new OkObjectResult($"Repo Clone complete: {repoUri.ToString()}, output: {result.ToString()}");
         }
-
 
         public static IActionResult CreateBadRequest(string message)
         {
