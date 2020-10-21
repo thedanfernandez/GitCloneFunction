@@ -1,6 +1,6 @@
 # GitCloneFunction
 
-An Azure Function code sample that demonstrates executing system processes like `git clone` in a serverless Docker container using .NET Standard. The code uses an HttpTrigger and a querystring parameter to get a repo URL, clone locally and return the results.
+A Serverless Azure Function code sample that demonstrates executing system processes like `git clone` in a serverless Docker container using .NET Standard. The code uses an HttpTrigger and a querystring parameter to get a repo URL, clone locally and return the results.
 
 ## Example
 
